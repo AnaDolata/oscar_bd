@@ -39,6 +39,26 @@ public class UsuarioDAO {
         return null;
     }
     
+        public boolean selectUser(Usuario user){
+        ConnectionFactory connector = new ConnectionFactory();
+        Connection conn = connector.getConnection();
+        int id = 0;
+        try {
+            Statement stmt = conn.createStatement();
+            PreparedStatement ps = conn.prepareStatement("SELECT * FROM pessoa WHERE nome=?");
+            ps.setString(1, user.getNome());
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                return true;
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } finally {
+            connector.close(conn);
+        }
+        return false;
+    }
+    
     public boolean insertToken(Usuario user, int token){
         ConnectionFactory connector = new ConnectionFactory();
         Connection conn = connector.getConnection();

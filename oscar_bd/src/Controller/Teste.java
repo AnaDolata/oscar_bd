@@ -25,7 +25,7 @@ public class Teste {
         
         UsuarioDAO bd = new UsuarioDAO();
         
-        nome = "teste1";
+        nome = "test";
         senha = "teste1";
         token = 56;
         filme = "dune";
@@ -33,7 +33,7 @@ public class Teste {
         
         Usuario user = new Usuario(nome, senha);
         
-        if(bd.votar(token, filme, diretor)){
+        if(bd.selectUser(user)){
             System.out.println("Votado");
         }else{
             System.out.println("Erro ao votar");
@@ -45,6 +45,7 @@ public class Teste {
         //bd.insertToken(user, token);
         //Usuario usuario = bd.select(user); --> usuario.getSenha();
         //bd.votar(token, filme, diretor);
+        //bd.selectUser(user) --> verifica se o usuário existe
     }
     
 }
