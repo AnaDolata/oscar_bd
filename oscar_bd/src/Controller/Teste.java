@@ -7,6 +7,8 @@ package Controller;
 import Model.Usuario;
 import connection.UsuarioDAO;
 import java.sql.SQLException;
+import java.util.Random;
+import org.json.simple.JSONObject;
 
 /**
  *
@@ -33,12 +35,13 @@ public class Teste {
         
         Usuario user = new Usuario(nome, senha);
         
-        if(bd.selectUser(user)){
-            System.out.println("Votado");
-        }else{
-            System.out.println("Erro ao votar");
-        }
         
+        Random r = new Random();
+        int token4 = r.nextInt(100)+1;
+        JSONObject obj = new JSONObject();
+        obj.put("token", token4);
+        int token2 = (int) obj.get("token");
+        System.out.println(obj);
         
         
         //bd.insert(user);
